@@ -21,6 +21,7 @@ namespace NossoBrasil.Controllers
         [HttpPost]
         public async Task<IActionResult> Pesquisar(string cep)
         {
+            if(cep == null) return BadRequest("Cep Inválido");
             var enderecoDto = await _enderecoService.EncontrarEnderecoPorCep(cep);
             return View(enderecoDto);
         }

@@ -7,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(typeof(EnderecoProfile));
+builder.Services.AddAutoMapper(typeof(DDDProfile));
 builder.Services.AddScoped<IEnderecoService, EnderecoService>();
+builder.Services.AddScoped<IDDDService, DDDService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

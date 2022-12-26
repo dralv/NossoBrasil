@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authentication;
 using NossoBrasil.Dtos;
 using NossoBrasil.Interfaces;
 using NossoBrasil.Models;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using static System.Net.WebRequestMethods;
 
 namespace NossoBrasil.Services
 {
@@ -24,6 +21,7 @@ namespace NossoBrasil.Services
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"{baseUrl}/{cep}");
 
+
             var response = new EnderecoModel();
 
             using(var client = new HttpClient())
@@ -33,7 +31,7 @@ namespace NossoBrasil.Services
                 var objResponse = JsonSerializer.Deserialize<EnderecoModel>(conteudoResponse);
                 response = objResponse;
             }
-
+           
             return _mapper.Map<EnderecoDTO>(response);
         }
     }
